@@ -11,9 +11,69 @@
     <!-- Controller specific -->
     <%= stylesheet_link_tag 'application', params[:controller], :media => "all" %>
     <%= javascript_include_tag 'application', params[:controller] %>
+
+    <!-- Mobile meta tags -->
+    <meta name="viewport" content="initial-scale=1.0">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container main">
+      <header>
+        <div class="row vertical-align">
+          <div class="col-sm-10">
+            <%= image_tag "logo.png", class: "img-responsive" %>
+          </div>
+          <div class="col-sm-2">
+            <%= link_to ENV["FACEBOOK_URL"], class: "btn btn-social-icon btn-round btn-facebook" do %>
+              <span class="fa fa-facebook"></span>
+            <% end %>
+          </div>
+        </div>
+      </header>
+
+      <nav class="row">
+        <ul>
+          <li class="<%= 'active' if params[:controller] == "inicio" %>">
+            <%= link_to "INICIO", root_path %>
+          </li>
+          <li class="dropdown <%= 'active' if params[:controller] == "empresa" %>">
+            <a class="dropdown-toggle" id="empresaDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EMPRESA</a>
+            <b class="caret"></b>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Quiénes Somos", empresa_quienes_somos_path %></li>
+              <li><%= link_to "Nuestros Valores", empresa_nuestros_valores_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown <%= 'active' if params[:controller] == "servicios" %>">
+            <a class="dropdown-toggle" id="serviciosDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SERVICIOS</a>
+            <b class="caret"></b>
+            <ul class="dropdown-menu">
+              <li><%= link_to "HyS en la Industria", servicios_hys_industria_path %></li>
+              <li><%= link_to "HyS para la Construcción", servicios_hys_construccion_path %></li>
+              <li><%= link_to "Medio Ambiente", servicios_medio_ambiente_path %></li>
+              <li><%= link_to "Estudios y Evaluaciones", servicios_estudios_y_evaluaciones_path %></li>
+              <li><%= link_to "Edificio Seguro", servicios_edificio_seguro_path %></li>
+              <li><%= link_to "Manuales de Procedimientos", servicios_manuales_de_procedimientos_path %></li>
+            </ul>
+          </li>
+          <li class="<%= 'active' if params[:controller] == "contacto" %>"">
+            <%= link_to "CONTACTO", contacto_index_path %>
+          </li>
+        </ul>
+      </nav>
+
+      <%= yield %>
+
+      <section class="row about-us">
+        <h4><b>QUÉ HACEMOS</b></h4>
+        <p>Brindamos servicios de asesoramiento externo en temas de Medio Ambiente, Higiene y seguridad en el trabajo, Evaluaciones y Mediciones, Habilitaciones Municipales, y Cálculos de Ingeniería Civil y Mecánica. Gracias a la característica multidisciplinaria de nuestro equipo de trabajo, formado por Licenciados en Química, en Seguridad Laboral, Ingenieros Civiles, Mecánicos y en Medio Ambiente, todos ellos especializados además en higiene y seguridad en el trabajo, podemos garantizar un excelente desempeño en empresas de distintos rubros, como industrial, construcción, salud, alimentación y servicios.</p>
+        <p>Proponemos un sistema de gestión integrado planificado a medida de cada cliente. Mantenemos visitas periódicas y frecuentes, realizadas por nuestro equipo de profesionales, auditando condiciones de trabajo, capacitando permanentemente al personal de las empresas y motivando una actitud preventiva responsable. Hacemos un seguimiento constante de la documentación de los legajos técnicos de seguridad, mediante auditorias, buscando resguardar las acciones de prevención adoptadas por la empresa. La documentación generada, se encuentra permanentemente a disposición de la empresa, a solo un click de distancia, asegurando con esto la reducción de tiempos de búsqueda de información archivada. Las gestiones presenciales ejecutadas, se reflejan en un informe elevado a la gerencia, para que esta tenga conocimiento permanente de ellas. Los resultados de estas gestiones, y de nuestra asistencia personalizada, a través del tiempo, han demostrado su éxito, ya que nuestros clientes han visto como reducen permanentemente sus niveles de accidentabilidad, han sido reconocidos gradualmente entre sus colegas como empresas más seguras, sus empleados han demostrado interés en la temática preventiva de la seguridad, e incluso algunos han despertado interés por estudiar y especializarse en seguridad industrial.</p>
+      </section>
+
+      <footer class="row">
+        Copyright ©2013 MAYSSO.
+        <span class="pull-right"><a href="#" id="back-to-top">Top</a></span>
+      </footer>
+    </div>
   </body>
 </html>
