@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'contacto/index'
+  post 'contacto/send_message'
 
   get 'servicios/hys_industria'
 

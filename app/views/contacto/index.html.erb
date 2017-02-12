@@ -1,2 +1,24 @@
-<h1>Contacto#index</h1>
-<p>Find me in app/views/contacto/index.html.erb</p>
+<section class="contact">
+  <h3>Contacto</h3>
+
+  <%= form_tag "send_message" do%>
+
+  <div class="form-group">
+    <%= label_tag :name, "Nombre" %>
+    <%= text_field_tag :name, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :email, "Email" %>
+    <%= text_field_tag :email, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :message, "Mensaje" %>
+    <%= text_area_tag :message, nil, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+  </div>
+
+  <% end %>
+</section>
